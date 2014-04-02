@@ -16,5 +16,14 @@ namespace CraigslistSpammer
         {
             InitializeComponent();
         }
+
+        private void btnSpam_Click(object sender, EventArgs e)
+        {
+            GetJobs getJobs = new GetJobs();
+
+            getJobs.Find("http://seattle.craigslist.org/search/jjj?zoomToPosting=&catAbb=jjj&query=web+developer&excats=");
+
+
+        }
     }
 }

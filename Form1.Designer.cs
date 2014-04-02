@@ -28,12 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnSpam = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // btnSpam
+            // 
+            this.btnSpam.Location = new System.Drawing.Point(105, 97);
+            this.btnSpam.Name = "btnSpam";
+            this.btnSpam.Size = new System.Drawing.Size(75, 23);
+            this.btnSpam.TabIndex = 0;
+            this.btnSpam.Text = "Spam Now!";
+            this.btnSpam.UseVisualStyleBackColor = true;
+            this.btnSpam.Click += new System.EventHandler(this.btnSpam_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnSpam);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnSpam;
     }
 }
 
