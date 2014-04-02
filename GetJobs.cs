@@ -12,33 +12,13 @@ namespace CraigslistSpammer
     class GetJobs
     {
 
-        public void Find(string url)
+        public static List<string> Find(string url)
         {
             WebClient w = new WebClient();
-            string s = w.DownloadString(url);
+            string file = w.DownloadString(url); 
 
-            foreach (LinkItem i in LinkFinder.Find(s))
-            {
-                Debug.WriteLine(i);
-            }
-        }
 
-        public struct LinkItem
-        {
-            public string Href;
-
-            public override string ToString()
-            {
-                return Href;
-            }
-        }
-    }
-
-    static class LinkFinder
-    {
-        public static List<CraigslistSpammer.GetJobs.LinkItem> Find(string file)
-        {
-            List<CraigslistSpammer.GetJobs.LinkItem> list = new List<CraigslistSpammer.GetJobs.LinkItem>();
+            List<string> list = new List<string>();
 
             // 1.
             // Find all matches in file.
@@ -50,7 +30,7 @@ namespace CraigslistSpammer
             foreach (Match m in m1)
             {
                 string value = m.Groups[1].Value;
-                CraigslistSpammer.GetJobs.LinkItem i = new CraigslistSpammer.GetJobs.LinkItem();
+                string i = null;
 
                 // 3.
                 // Get href attribute.
@@ -58,14 +38,8 @@ namespace CraigslistSpammer
                 RegexOptions.Singleline);
                 if (m2.Success)
                 {
-                    i.Href = m2.Groups[1].Value;
+                    i = m2.Groups[1].Value;
                 }
-
-                // 4.
-                // Remove inner tags from text.
-                //string t = Regex.Replace(value, @"\s*<.*?>\s*", "",
-                //RegexOptions.Singleline);
-                ////i.Text = t;
 
                 list.Add(i);
             }

@@ -19,9 +19,12 @@ namespace CraigslistSpammer
 
         private void btnSpam_Click(object sender, EventArgs e)
         {
-            GetJobs getJobs = new GetJobs();
+            List<string> allJobs = GetJobs.Find("http://seattle.craigslist.org/search/jjj?zoomToPosting=&catAbb=jjj&query=web+developer&excats=");
 
-            getJobs.Find("http://seattle.craigslist.org/search/jjj?zoomToPosting=&catAbb=jjj&query=web+developer&excats=");
+            var getEmails = new GetEmails(allJobs);
+            getEmails.Retrieve();
+
+
 
 
         }
